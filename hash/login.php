@@ -7,9 +7,13 @@
 </head>
 <body>
 <h1>SE CONNECTER</h1>
-   <form action="" method="post">
-       <input type="text" name="username" placeholder="username">
-       <input type="password" name="password" placeholder="password">
+   <form action="traitement.php?action=login" method="post">
+    <label for="email">Email</label>
+       <input type="email" name="email" id="email" placeholder="email"><br>
+
+       <label for="password">Mot de passe</label>
+       <input type="password" name="password" id="password" placeholder="password"><br>
+
        <input type="submit" name="submit" value="Se connecter">
    </form>
     

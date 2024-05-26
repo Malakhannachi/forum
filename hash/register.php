@@ -12,7 +12,7 @@
         <input type="text" name="pseudo" id="pseudo"><br>
 
         <label for="email">Mail</label>
-        <input type="email" name="email" id="email"><br>
+        <input type="email" name="email" id="email" placeholder="email"><br>
 
         <label for="pass1">Mot de passe</label>
         <input type="password" name="pass1" id="pass1"><br>

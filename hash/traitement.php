@@ -1,12 +1,10 @@
 <?php
-
+session_start();
 if (isset($_GET["action"])) {
     switch ($_GET["action"]) {
         case "register":
             if ($_POST ["submit"]) {
-                # code...
-            }
-            $pdo = new PDO("mysql:host=localhost;dbname=hash", "root", "");
+                $pdo = new PDO("mysql:host=localhost;dbname=hash", "root", "");
             $pseudo = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
             $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -28,12 +26,26 @@ if (isset($_GET["action"])) {
                         "email"=>$email, 
                         "password"=>password_hash($pass1, PASSWORD_DEFAULT)
                     ]);
-                    header("location: login.php");exit;
+                    
                     }
                     }
                 }
  
+                
+            }
+            header("location: login.php");exit;
+            
             break;
+            case "login":
+                if ($_POST["submit"])   {
+                    $pdo = new PDO("mysql:host=localhost;dbname=hash", "root", "");
+                    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+                    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+                }
+                break;
+            case "logout":
+                break;
+            
 
     }
      
