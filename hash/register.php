@@ -20,6 +20,9 @@
         <label for="pass2"> Confirmation de mot de passe</label>
         <input type="password" name="pass2" id="pass2"><br>
 
+        <label for="role">Role</label>
+        <input type="text" name="role" id="role"><br>
+
         <input type="submit" name="submit" value="s'inscrire">
     </form>
 </body>

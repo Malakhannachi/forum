@@ -9,10 +9,11 @@ if (isset($_GET["action"])) {
             $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
             $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $pass2 = filter_input(INPUT_POST, "pass2", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             if ($pseudo && $email && $pass1 && $pass2) {
                 //var_dump("ok");
                 $requete = $pdo -> prepare("
-                SELECT *FROM user WHERE email=:email");
+                SELECT *FROM membre WHERE email=:email");
                 $requete ->execute(["email"=>$email]);
                 $user = $requete->fetch();
                 if($user){
@@ -40,7 +41,14 @@ if (isset($_GET["action"])) {
                 if ($_POST["submit"])   {
                     $pdo = new PDO("mysql:host=localhost;dbname=hash", "root", "");
                     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
-                    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+                    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    if ($email && $password) {
+                        $requete = $pdo -> prepare("
+                        SELECT * FFROM membre WHERE email = :email");
+                        $requete ->execute(["email"=>$email]);
+                        $user = $requete->fetch();
+                    }
+                 
                 }
                 break;
             case "logout":
