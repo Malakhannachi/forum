@@ -1,9 +1,10 @@
+<?php ob_start(); ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
     <h1>s'inscrire</h1>
@@ -20,10 +21,10 @@
         <label for="pass2"> Confirmation de mot de passe</label>
         <input type="password" name="pass2" id="pass2"><br>
 
-        <label for="role">Role</label>
-        <input type="text" name="role" id="role"><br>
-
         <input type="submit" name="submit" value="s'inscrire">
     </form>
 </body>
 </html>
+<?php
+$contenu = ob_get_clean();
+require "template/template.php";
