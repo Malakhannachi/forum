@@ -1,5 +1,5 @@
 <?php
-namespace Model;
+namespace Model;    // il faut mettre le nom de namspace comme dans le dossier 
 
 abstract class Connect
 {

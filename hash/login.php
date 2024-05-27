@@ -24,6 +24,6 @@
 </body>
 </html>
 <?php
-$title = "Se connecter";
+//$title = "Se connecter";
 $contenu = ob_get_clean();
 require "template/template.php";

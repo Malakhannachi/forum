@@ -9,6 +9,7 @@
 <body>
     <h1>s'inscrire</h1>
     <form action="index.php?action=register" method="post">
+        
         <label for="pseudo">Pseudo</label>
         <input type="text" name="pseudo" id="pseudo"><br>
 
