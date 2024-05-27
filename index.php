@@ -7,11 +7,11 @@ spl_autoload_register(function ($class_name) {
 
 $secuCtrl = new SecuriteController();
 
-
 if(isset($_GET['action'])) {
     switch($_GET['action']) {
         case "register":$secuCtrl->register(); break;
         case "login":$secuCtrl->login(); break;
+        case "logout":$secuCtrl->logout(); break;
        
         }
 }

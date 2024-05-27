@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>s'inscrire</title>
 </head>
 <body>
     <h1>s'inscrire</h1>
-    <form action="traitement.php?action=register" method="post">
+    <form action="index.php?action=register" method="post">
         <label for="pseudo">Pseudo</label>
         <input type="text" name="pseudo" id="pseudo"><br>
 
@@ -26,5 +26,6 @@
 </body>
 </html>
 <?php
+$title = "s'inscrire";
 $contenu = ob_get_clean();
 require "template/template.php";

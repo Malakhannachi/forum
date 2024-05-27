@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>SE CONNECTER</h1>
-   <form action="traitement.php?action=login" method="post">
+   <form action="index.php?action=login" method="post">
        
     <label for="email">Email</label>
        <input type="email" name="email" id="email" placeholder="email"><br>
@@ -24,5 +24,6 @@
 </body>
 </html>
 <?php
+$title = "Se connecter";
 $contenu = ob_get_clean();
 require "template/template.php";

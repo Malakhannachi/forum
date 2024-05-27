@@ -12,12 +12,12 @@
     <?php 
      // si je suis connecté 
     if ( isset ($_SESSION["membre"])) {     ?>          
-        <a href="controlleur/securitéControlleur.php">Se déconnecter</a>
+        <a href="index.php?action=logout">Se déconnecter</a>
    <?php }   else { ?>
         <a href="index.php?action=login">Se connecter</a>
         <a href="index.php?action=register">S'incrire</a>
    <?php } ?>
-    <h1>Bienvenue</h1>
+    
     <main>
      <div id="contenu">
            <?= $contenu ?>

@@ -7,7 +7,7 @@ class SecuriteController{
     public function register(){
        
         if (isset($_POST["submit"])) {
-            $pdo = Connect::seConnecter();
+            $pdo = Connect :: seConnecter();
                 //filtrer les données 
                 $pseudo = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
@@ -42,26 +42,36 @@ class SecuriteController{
         }
     public function login(){
         if (isset($_POST ["submit"])) {
-            $pdo = Connect:: seConnecter();
+            $pdo = Connect :: seConnecter();
             //filtrer les données 
             $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
-            $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            if ($email && $pass1 && $role) {
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            if ($email && $password) { 
                 //var_dump("ok");
                 $requete = $pdo -> prepare("
-                SELECT * FROM membre WHERE email=:email");
+                SELECT * FROM membre WHERE email=:email");  //recuperer l'email
                 $requete ->execute(["email"=>$email]);
                 $membre = $requete->fetch();
+                var_dump($membre);die;
                 if($membre){
-                    if(password_verify($pass1, $membre["password"])){
+                    if(password_verify($password, $membre["password"])){
                         $_SESSION["membre"] = $membre;
                         header("location: index.php?action=login");exit;
-                    }   
+                    } 
+                }else{
+                    header("location: index.php?action=login");exit;
+                    echo "email ou mot de passe incorrect";
+                }  
                 }   
-            }   
-        }   
-        require("hash/login.php");
+            } 
+            require ("hash/login.php");  
+        } 
+
+        
+    public function logout(){
+        session_destroy();
+        header("location: index.php?action=login");exit;
+    
     }       
 }
 
