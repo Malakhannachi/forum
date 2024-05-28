@@ -1,18 +1,30 @@
 <?php
 use Controller\SecuriteController;
+use Controlleur\ControlleurForum;
 
 spl_autoload_register(function ($class_name) {
     require $class_name.'.php';
 });
 
 $secuCtrl = new SecuriteController();
+$ctrFrm = new ControlleurForum();
 
 if(isset($_GET['action'])) {
     switch($_GET['action']) {
-        case "register":$secuCtrl->register(); break;
-        case "login":$secuCtrl->login(); break;
+        case 
+            "register":$secuCtrl->register(); 
+        break;
+        case 
+            "login":$secuCtrl->login(); 
+        break;
         // case "logout":$secuCtrl->logout(); break;
-        case "accueil":$secuCtrl->accueil(); break;
-       
+        case 
+            "accueil":$ctrFrm->accueil(); 
+        break;
+        case 
+            "listeCat":$ctrFrm->listeCat(); 
+        break;
         }
-}
+
+    }
+

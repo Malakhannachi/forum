@@ -17,6 +17,12 @@
         <a href="index.php?action=login">Se connecter</a>
         <a href="index.php?action=register">S'incrire</a>
    <?php } ?>
+   <div id="nav">
+    <nav>
+        <a href="index.php?action=accueil">Accueil</a>
+        <a href="index.php?action=listeCat">Catégories</a>
+    </nav>
+   </div>
     
     <main>
      <div id="contenu">

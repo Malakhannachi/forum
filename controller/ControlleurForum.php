@@ -6,16 +6,18 @@ use Model\Connect;
 
  class ControlleurForum {
 
-    public function accueil() {
+    public function accueil() 
+    {
 
         require ("view/acceuil.php");
     }
 
-    public function listeCat () {
+    public function listeCat () 
+    {
         $pdo = Connect::seConnecter();
-
-        $listeCat = $pdo->query("SELECT * FROM categorie");
-        $listeCat = $listeCat->fetchAll();
+        $listeCat = $pdo->query("
+        SELECT * 
+        FROM categorie");
         require ("view/listeCat.php");
     }
 }
