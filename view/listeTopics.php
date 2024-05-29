@@ -16,7 +16,8 @@
         foreach ($listeTopics->fetchAll() as $topic) { ?>
             <tr>
                 <td><?= $topic['date_Cr'] ?></td>
-                <td><?= $topic['topics'] ?></td>
+                <td><a href="index.php?action=listMsg&id=<?= $topic['id_topics'] ?>">
+                <?= $topic['topics'] ?></a></td>
                 <!--<td><?=$topic ['id_categorie'] ?></td>-->
                 <td><?= $topic['categorie'] ?></td>   <!-- afficher le nom de la catégorie -->
                 <!--<td><?= $topic['id_membre'] ?></td>-->

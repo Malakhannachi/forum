@@ -27,7 +27,7 @@ use Model\Connect;
         $pdo = Connect::seConnecter();
         // afficher liste topics avec le nom de categorie et le nom de membre 
         $listeTopics = $pdo->prepare("
-            SELECT topics.date_Cr, topics.topics , categorie.categorie , membre.pseudo
+            SELECT topics.id_topics, topics.date_Cr, topics.topics , categorie.categorie , membre.pseudo
             FROM topics
             INNER JOIN categorie ON topics.id_categorie = categorie.id_categorie   
             INNER JOIN membre ON topics.id_membre = membre.id_membre
@@ -43,9 +43,26 @@ use Model\Connect;
         //FROM membre ");
         
         require ("view/listeTopics.php");
-       
-
         
+    }
+
+    public function listMsg ($id) {
+        $pdo = Connect::seConnecter();
+        $listMsg = $pdo-> prepare("
+        SELECT message.posts, message.date_Envoy, membre.pseudo, topics.topics
+        FROM message
+        INNER JOIN membre ON membre.id_membre = message.id_membre
+        INNER JOIN topics ON topics.id_topics = message.id_topics
+        WHERE message.id_topics = :id
+        ORDER BY date_Cr DESC");
+        $listMsg->execute(['id' => $id]);
+        require ("view/listMsg.php");
+    }
+    public function addTopics ($id) {
+        $pdo = Connect::seConnecter();
+        $addTopics = $pdo->prepare("
+        INSERT INTO topics (id_categorie, id_membre, topics) VALUES (:id_categorie, :id_membre, :topics)");
+        $addTopics->execute(['id_categorie' => $id, 'id_membre' => $_SESSION['id_membre'], 'topics' => $_POST['topics']]);
     }
     
 }
