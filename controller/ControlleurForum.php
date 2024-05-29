@@ -6,7 +6,7 @@ use Model\Connect;
 
  class ControlleurForum {
 
-    public function accueil() 
+    public function accueil()  
     {
 
         require ("view/acceuil.php");
