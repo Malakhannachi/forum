@@ -3,6 +3,7 @@
 <table>
     <thead>
         <tr>
+            <th>id</th>
             <th>Categorie</th>
         </tr>
     </thead>
@@ -10,6 +11,7 @@
         <?php
         foreach ($listeCat->fetchAll() as $cat) { ?>
             <tr>
+                <td><?= $cat['id_categorie'] ?></td>
                 <td><a href="index.php?action=listeTopics&id=<?= $cat['id_categorie'] ?>">
                 <?= $cat['categorie'] ?></a></td>
             </tr>

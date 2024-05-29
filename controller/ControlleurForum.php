@@ -16,7 +16,7 @@ use Model\Connect;
     {
         $pdo = Connect::seConnecter();
         $listeCat = $pdo->query("
-        SELECT * 
+        SELECT id_categorie, categorie 
         FROM categorie");
         require ("view/listeCat.php");
     }
@@ -25,7 +25,7 @@ use Model\Connect;
     {
         $pdo = Connect::seConnecter();
         $listeTopics = $pdo->prepare("
-        SELECT * 
+        SELECT *
         FROM topics
         WHERE id_categorie = :id
         ORDER BY date_creation DESC");
