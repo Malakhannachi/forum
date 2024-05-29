@@ -7,7 +7,8 @@
             <th>Date Creation</th>
             <th>Topics</th>
             <th>Categorie</th>
-            <th>Mmembre</th>
+            <th>Pseudo</th>
+
         </tr>
     </thead>
     <tbody>
@@ -16,8 +17,11 @@
             <tr>
                 <td><?= $topic['date_Cr'] ?></td>
                 <td><?= $topic['topics'] ?></td>
-                <td><?=$topic ['id_categorie'] ?></td>
-                <td><?= $topic['id_membre'] ?></td>
+                <!--<td><?=$topic ['id_categorie'] ?></td>-->
+                <td><?= $topic['categorie'] ?></td>   <!-- afficher le nom de la catégorie -->
+                <!--<td><?= $topic['id_membre'] ?></td>-->
+                <td><?= $topic['pseudo'] ?></td>   <!-- afficher le pseudo du membre -->
+
             </tr>
             <?php } ?>
     </tbody>

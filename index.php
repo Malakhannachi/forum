@@ -8,7 +8,7 @@ spl_autoload_register(function ($class_name) {
 
 $secuCtrl = new SecuriteController();
 $ctrFrm = new ControlleurForum();
-$id = isset($_GET['id_categorie']) ? $_GET["id_categorie"] : null;
+$id = isset($_GET['id']) ? $_GET["id"] : null;
 
 
 
