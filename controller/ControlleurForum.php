@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlleur;
+namespace Controller;
 
 use Model\Connect;
 
@@ -19,5 +19,19 @@ use Model\Connect;
         SELECT * 
         FROM categorie");
         require ("view/listeCat.php");
+    }
+
+    public function listeTopics ($id) 
+    {
+        $pdo = Connect::seConnecter();
+        $listeTopics = $pdo->prepare("
+        SELECT * 
+        FROM topics
+        WHERE id_categorie = :id_categorie
+        ORDER BY date_creation DESC");
+        $listeTopics->execute(['id_categorie' => $_GET['id_categorie']]);
+       
+
+        require ("view/listeTopics.php");
     }
 }

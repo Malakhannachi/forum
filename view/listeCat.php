@@ -10,7 +10,8 @@
         <?php
         foreach ($listeCat->fetchAll() as $cat) { ?>
             <tr>
-                <td><?= $cat['categorie'] ?></td>
+                <td><a href="index.php?action=listeTopics&id_categorie=<?= $cat['id_categorie'] ?>">
+                <?= $cat['categorie'] ?></a></td>
             </tr>
             <?php } ?>
     </tbody>

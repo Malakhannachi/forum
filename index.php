@@ -1,6 +1,6 @@
 <?php
 use Controller\SecuriteController;
-use Controlleur\ControlleurForum;
+use Controller\ControlleurForum;
 
 spl_autoload_register(function ($class_name) {
     require $class_name.'.php';
@@ -8,6 +8,9 @@ spl_autoload_register(function ($class_name) {
 
 $secuCtrl = new SecuriteController();
 $ctrFrm = new ControlleurForum();
+$id = isset($_GET['id_categorie']) ? $_GET["id_categorie"] : null;
+
+
 
 if(isset($_GET['action'])) {
     switch($_GET['action']) {
@@ -24,7 +27,11 @@ if(isset($_GET['action'])) {
         case 
             "listeCat":$ctrFrm->listeCat(); 
         break;
+        case 
+            "listeTopics":$ctrFrm->listeTopics( $id ); 
+        break;
         }
+        
 
     }
 
