@@ -4,7 +4,7 @@
     <thead>
         <tr>
             <th>id</th>
-            <th>Categorie</th>
+            
         </tr>
     </thead>
     <tbody>
