@@ -27,9 +27,9 @@ use Model\Connect;
         $listeTopics = $pdo->prepare("
         SELECT * 
         FROM topics
-        WHERE id_categorie = :id_categorie
+        WHERE id_categorie = :id
         ORDER BY date_creation DESC");
-        $listeTopics->execute(['id_categorie' => $_GET['id_categorie']]);
+        $listeTopics->execute(['id' => $id]);
        
 
         require ("view/listeTopics.php");
