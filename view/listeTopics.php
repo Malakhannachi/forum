@@ -13,9 +13,11 @@
     </thead>
     <tbody>
         <?php
-        foreach ($listeTopics->fetchAll() as $topic) { ?>
+        foreach ($listeTopics->fetchAll() as $topic) { 
+            $dateCr = (new DateTime($topic['date_Cr']))->format('d/m/Y');
+            ?>
             <tr>
-                <td><?= $topic['date_Cr'] ?></td>
+                <td><?= $dateCr ?></td>
                 <td><a href="index.php?action=listMsg&id=<?= $topic['id_topics'] ?>">
                 <?= $topic['topics'] ?></a></td>
                 <!--<td><?=$topic ['id_categorie'] ?></td>-->

@@ -12,10 +12,12 @@
     </thead>
     <tbody>
         <?php
-        foreach ($listMsg->fetchAll() as $msg) { ?>
+        foreach ($listMsg->fetchAll() as $msg) {
+            $date_Envoy = (new DateTime($msg['date_Envoy']))->format('d/m/Y');
+            ?>
             <tr>
                 <td><?= $msg['posts'] ?></td>
-                <td><?= $msg['date_Envoy'] ?></td>
+                <td><?= $date_Envoy ?></td>
                 <td><?= $msg['pseudo'] ?></td>
                 <?= $msg['topics'] ?></a></td>
             </tr>
