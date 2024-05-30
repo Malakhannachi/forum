@@ -21,6 +21,7 @@
     <nav>
         <a href="index.php?action=accueil">Accueil</a>
         <a href="index.php?action=listeCat">Catégories</a>
+        <a href="index.php?action=addTopics">Ajouter un topic</a>
     </nav>
    </div>
     

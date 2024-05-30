@@ -58,6 +58,36 @@ use Model\Connect;
         $listMsg->execute(['id' => $id]);
         require ("view/listMsg.php");
     }
+    public function addTopics () {
+        $pdo = Connect::seConnecter();
+        if (isset($_POST['submit'])) {
+            $date_Cr = filter_input(INPUT_POST, "date_Cr", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $topics = filter_input(INPUT_POST, "topics", FILTER_SANITIZE_FULL_SPECIAL_CHARS);   
+            $id_categorie = filter_input(INPUT_POST, "id_categorie", FILTER_SANITIZE_NUMBER_INT);
+            $id_membre = filter_input(INPUT_POST, "id_membre", FILTER_SANITIZE_NUMBER_INT);
+            if ( $date_Cr && $topics && $id_categorie && $id_membre) {
+                
+        // afficher formulaire d'ajout de topic
+        $addTopics = $pdo->prepare("
+        INSERT INTO topics(date_Cr, topics, id_categorie, id_membre)
+         VALUES (:date_Cr, :topics, :id_categorie, :id_membre)");
+         $addTopics->execute([
+            'date_Cr' => $date_Cr, 
+            'topics' => $topics, 
+            'id_categorie' => $id_categorie , 
+            'id_membre' => $id_membre]);
+
+        }
+
+        }
+        $id_categorie = $pdo->query("
+       SELECT *
+       FROM categorie ");
+       $id_membre = $pdo->query("
+       SELECT *
+       FROM membre ");
+        require ("view/addTopics.php");
+    }
    
     
 }
