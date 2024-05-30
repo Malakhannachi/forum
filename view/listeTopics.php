@@ -14,7 +14,7 @@
     <tbody>
         <?php
         foreach ($listeTopics->fetchAll() as $topic) { 
-            $dateCr = (new DateTime($topic['date_Cr']))->format('d/m/Y');
+            $dateCr = (new DateTime($topic['date_Cr']))->format('d/m/Y');  //changer le format de la date en francais
             ?>
             <tr>
                 <td><?= $dateCr ?></td>

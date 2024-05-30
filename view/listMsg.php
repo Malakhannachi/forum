@@ -13,7 +13,7 @@
     <tbody>
         <?php
         foreach ($listMsg->fetchAll() as $msg) {
-            $date_Envoy = (new DateTime($msg['date_Envoy']))->format('d/m/Y');
+            $date_Envoy = (new DateTime($msg['date_Envoy']))->format('d/m/Y');   // changer le format de la date en francais 
             ?>
             <tr>
                 <td><?= $msg['posts'] ?></td>
