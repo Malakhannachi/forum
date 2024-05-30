@@ -33,9 +33,7 @@ if(isset($_GET['action'])) {
         case 
         "listMsg":$ctrFrm->listMsg( $id ); 
         break;
-        case 
-            "addTopics":$ctrFrm->addTopics( $id ); 
-        break;
+       
 
 
 

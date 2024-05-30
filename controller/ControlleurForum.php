@@ -58,11 +58,6 @@ use Model\Connect;
         $listMsg->execute(['id' => $id]);
         require ("view/listMsg.php");
     }
-    public function addTopics ($id) {
-        $pdo = Connect::seConnecter();
-        $addTopics = $pdo->prepare("
-        INSERT INTO topics (id_categorie, id_membre, topics) VALUES (:id_categorie, :id_membre, :topics)");
-        $addTopics->execute(['id_categorie' => $id, 'id_membre' => $_SESSION['id_membre'], 'topics' => $_POST['topics']]);
-    }
+   
     
 }
