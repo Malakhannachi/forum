@@ -20,7 +20,9 @@ if(isset($_GET['action'])) {
         case 
             "login":$secuCtrl->login(); 
         break;
-        // case "logout":$secuCtrl->logout(); break;
+         case 
+         "logout":$secuCtrl->logout();
+          break;
         case 
             "accueil":$ctrFrm->accueil(); 
         break;

@@ -25,7 +25,7 @@ class SecuriteController{
                     $membre = $requete->fetch();
                     if($membre){     // si le membre existe
                         //var_dump("existe");die;
-                        header("Location: index.php?action=register");exit;
+                        header("Location: index.php?action=login");exit;
                     }else{
                         //var_dump("n'existe pas");die; 
                         //si le membre n'existe pas
@@ -89,14 +89,12 @@ class SecuriteController{
             } 
 
             
-    //  public function logout(){
-        // session_destroy();
-        // header("location: index.php?action=login");exit;
+      public function logout(){
+         unset($_SESSION["membre"]);
+         header("location: index.php?action=login");exit;
         
-        //}  
-        public function accueil(){
-            require ("view/acceuil.php");
-        }     
+       }  
+           
     }
 
 
