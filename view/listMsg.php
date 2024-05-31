@@ -25,7 +25,8 @@ $topic = $reqtopics->fetch();   // récupérer le nom du topic
     </thead>
     <tbody>
         <?php
-        foreach ($listMsg->fetchAll() as $msg) {
+        foreach ($listMsg->fetchAll() as $msg) //boucle pour afficher les messages
+         {
             $date_Envoy = (new DateTime($msg['date_Envoy']))->format('d/m/Y H:i');   // changer le format de la datetime en francais 
             ?>
             <tr>

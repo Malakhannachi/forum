@@ -41,13 +41,6 @@ use Model\Connect;
             WHERE topics.id_categorie = :id
             ORDER BY date_Cr DESC");
         $listeTopics->execute(['id' => $id]);
-
-        //$id_categorie = $pdo->query("
-       // SELECT * 
-        //FROM categorie ");
-        //$id_membre = $pdo->query("
-        //SELECT *
-        //FROM membre ");
         
         require ("view/listeTopics.php");
         
@@ -123,6 +116,17 @@ use Model\Connect;
         
         
         
+    }
+
+    public function delTopics ($id)  // supprimer un topic par son id
+    {
+        $pdo = Connect::seConnecter();
+        $delTopics = $pdo->prepare("
+        DELETE FROM topics
+        WHERE id_topics = :id");
+        $delTopics->execute(['id' => $id]);
+        header("Location: index.php?action=accueil");
+        exit;
     }
    
     
