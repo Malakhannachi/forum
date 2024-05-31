@@ -3,7 +3,7 @@
 <table>
     <thead>
         <tr>
-            <th>id</th>
+            <th>categories</th>
             
         </tr>
     </thead>

@@ -58,35 +58,57 @@ use Model\Connect;
         $listMsg->execute(['id' => $id]);
         require ("view/listMsg.php");
     }
-    public function addTopics () {
+    public function addTopics ($id) {
+       
         $pdo = Connect::seConnecter();
         if (isset($_POST['submit'])) {
-            $date_Cr = filter_input(INPUT_POST, "date_Cr", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            //$date_Cr = filter_input(INPUT_POST, "date_Cr", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $topics = filter_input(INPUT_POST, "topics", FILTER_SANITIZE_FULL_SPECIAL_CHARS);   
             $id_categorie = filter_input(INPUT_POST, "id_categorie", FILTER_SANITIZE_NUMBER_INT);
-            $id_membre = filter_input(INPUT_POST, "id_membre", FILTER_SANITIZE_NUMBER_INT);
-            if ( $date_Cr && $topics && $id_categorie && $id_membre) {
+            $id_membre = $_SESSION["membre"]["id_membre"];   // récupérer l'id du membre
+            if ( $topics && $id_categorie && $id_membre) {
                 
         // afficher formulaire d'ajout de topic
         $addTopics = $pdo->prepare("
-        INSERT INTO topics(date_Cr, topics, id_categorie, id_membre)
+        INSERT INTO topics( topics, id_categorie, id_membre)
          VALUES (:date_Cr, :topics, :id_categorie, :id_membre)");
          $addTopics->execute([
-            'date_Cr' => $date_Cr, 
             'topics' => $topics, 
             'id_categorie' => $id_categorie , 
-            'id_membre' => $id_membre]);
-
+            'id_membre' => $id_membre ]);
+            header("Location: index.php?action=listeTopics&id=".$id_categorie);  // rediriger vers la page listeTopics
+                exit;
         }
 
         }
-        $id_categorie = $pdo->query("
-       SELECT *
-       FROM categorie ");
-       $id_membre = $pdo->query("
-       SELECT *
-       FROM membre ");
+      
         require ("view/addTopics.php");
+    }
+    public function addMsg ($id) {
+        $pdo = Connect::seConnecter();
+        if (isset($_POST['submit'])) {
+            $posts = filter_input(INPUT_POST, "posts", FILTER_SANITIZE_FULL_SPECIAL_CHARS);   
+            $id_topics = filter_input(INPUT_POST, "id_topics", FILTER_SANITIZE_NUMBER_INT);
+            $id_membre = $_SESSION["membre"]["id_membre"];   // récupérer l'id du membre
+            if ( $posts && $id_membre && $id_topics) {
+                
+        // afficher formulaire d'ajout de topic
+        $addMsg = $pdo->prepare("
+        INSERT INTO message( posts, id_topics, id_membre)
+         VALUES (:posts, :id_topics, :id_membre)");
+         $addMsg->execute([
+            'posts' => $posts, 
+            'id_topics' => $id_topics , 
+            'id_membre' => $id_membre ]);
+
+            header("Location: index.php?action=listMsg&id=".$id_topics); // rediriger vers la page listMsg
+            exit;
+
+        }       
+
+        }
+        
+        require ("view/addMsg.php");
     }
    
     

@@ -6,7 +6,7 @@
         <tr>
             <th>Date Creation</th>
             <th>Topics</th>
-            <th>Categorie</th>
+            
             <th>Pseudo</th>
 
         </tr>
@@ -21,7 +21,7 @@
                 <td><a href="index.php?action=listMsg&id=<?= $topic['id_topics'] ?>">
                 <?= $topic['topics'] ?></a></td>
                 <!--<td><?=$topic ['id_categorie'] ?></td>-->
-                <td><?= $topic['categorie'] ?></td>   <!-- afficher le nom de la catégorie -->
+                <!--<td><?= $topic['categorie'] ?></td>    afficher le nom de la catégorie -->
                 <!--<td><?= $topic['id_membre'] ?></td>-->
                 <td><?= $topic['pseudo'] ?></td>   <!-- afficher le pseudo du membre -->
 
