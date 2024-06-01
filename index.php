@@ -41,6 +41,9 @@ if(isset($_GET['action'])) {
         case
         "addMsg":$ctrFrm->addMsg($id); 
         break;
+        case
+        "delTopics":$ctrFrm->delTopics($id);
+        break;
        
 
 
